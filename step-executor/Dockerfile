@@ -1,4 +1,12 @@
-FROM alpine
-WORKDIR /var/executor
-COPY build.sh /var/executor/build.sh
-CMD sh /var/executor/build.sh
+FROM node:12-alpine
+
+WORKDIR /usr/src/executor
+
+RUN apk add --update docker openrc
+RUN rc-update add docker boot
+
+COPY package*.json ./
+
+RUN npm install
+COPY . .
+CMD node .
