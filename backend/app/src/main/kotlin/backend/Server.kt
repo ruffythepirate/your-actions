@@ -1,13 +1,16 @@
 package backend
 
 import io.vertx.core.AbstractVerticle
+import io.vertx.ext.web.Router
+import backend.jobs.JobController
 
 public class Server: AbstractVerticle() {
     override fun start() {
-        vertx.createHttpServer().requestHandler { req ->
-            req.response()
-            .putHeader("content-type", "text/plain")
-            .end("Hello world")
-        }.listen(8080)
+        println("Starting Web server...")
+        val router = Router.router(vertx)
+        JobController(router);
+        vertx.createHttpServer()
+        .requestHandler(router)
+        .listen(8080)
     }
 }
