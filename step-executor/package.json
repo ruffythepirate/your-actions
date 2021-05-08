@@ -1,0 +1,17 @@
+{
+  "name": "step-executor",
+  "version": "1.0.0",
+  "description": "Loads a configuration and build a step executor Docker image.",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Johan Ablett-Karlsson",
+  "license": "ISC",
+  "dependencies": {
+    "read-yaml": "^1.1.0"
+  }
+}

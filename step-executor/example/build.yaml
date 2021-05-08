@@ -1,0 +1,8 @@
+name: Example build
+git_repo: git@github.com:ruffythepirate/ts-geometry-2d.git
+steps:
+  - id: hello-world
+    from: alpine
+    script: >
+      echo 'hello world'
+
