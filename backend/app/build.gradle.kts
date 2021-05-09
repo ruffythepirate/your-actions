@@ -8,6 +8,7 @@ plugins {
 repositories {
     // Use JCenter for resolving dependencies.
     jcenter()
+    mavenLocal()
 }
 
 dependencies {
@@ -17,13 +18,23 @@ dependencies {
     // Use the Kotlin JDK 8 standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    compile ("io.vertx:vertx-web:4.0.3")
+    implementation ("io.vertx:vertx-web:4.0.3")
 
-    // Use the Kotlin test library.
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    testImplementation("io.vertx:vertx-junit5:4.0.3")
 
-    // Use the Kotlin JUnit integration.
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+    testImplementation(kotlin("test-junit5"))
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+
+    testImplementation("com.jayway.restassured:rest-assured:2.4.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.10.0")
+
+    implementation("jakarta.xml.bind:jakarta.xml.bind-api:2.3.2")
+    implementation("org.glassfish.jaxb:jaxb-runtime:2.3.2")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
